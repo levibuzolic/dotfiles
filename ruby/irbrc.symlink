@@ -3,7 +3,7 @@ require 'irb/completion'
 require 'irb/ext/save-history'
 require 'rubygems'
 
-IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 5000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
@@ -46,3 +46,16 @@ end
 def r
   reload!
 end
+
+# Pretty Print method
+require_without_bundler 'pp'
+
+# Awesome Print gem (gem install awesome_print)
+begin
+  require_without_bundler 'awesome_print'
+rescue LoadError
+  puts "awesome_print is not installed. To enable, run: gem install awesome_print"
+end
+
+# Tab Completion
+require_without_bundler 'irb/completion'

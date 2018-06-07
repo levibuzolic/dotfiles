@@ -1,72 +1,79 @@
-autoload colors && colors
-# cheers, @ehrenmurdick
-# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
+setopt prompt_subst
+autoload -U colors && colors # Enable colors in prompt
 
-if (( $+commands[git] ))
-then
-  git="$commands[git]"
-else
-  git="/usr/bin/git"
-fi
-
-git_branch() {
-  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
-}
-
-git_dirty() {
-  if $(! $git status -s &> /dev/null)
-  then
-    echo ""
-  else
-    if [[ $($git status --porcelain) == "" ]]
-    then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
-    else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
-    fi
+function _user_host() {
+  if [[ -n $SSH_CONNECTION ]]; then
+    me="%{$fg[green]%}%n%{$fg[white]%}@%{$fg[yellow]%}%m"
+  elif [[ $LOGNAME != $USER ]]; then
+    me="%{$fg[green]%}%n"
+  fi
+  if [[ -n $me ]]; then
+    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
   fi
 }
 
-git_prompt_info () {
- ref=$($git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
+function _path() {
+  echo "%{$fg[red]%}%~"
 }
 
-# This assumes that you always have an origin named `origin`, and that you only
-# care about one specific origin. If this is not the case, you might want to use
-# `$git cherry -v @{upstream}` instead.
-need_push () {
-  if [ $($git rev-parse --is-inside-work-tree 2>/dev/null) ]
-  then
-    number=$($git cherry -v origin/$(git symbolic-ref --short HEAD) 2>/dev/null | wc -l | bc)
+# Modify the colors and symbols in these variables as desired.
+GIT_PROMPT_PREFIX="%{$fg[blue]%}[%{$reset_color%}"
+GIT_PROMPT_SUFFIX="%{$fg[blue]%}]%{$reset_color%}"
+GIT_PROMPT_AHEAD="%{$fg[red]%}↑NUM%{$reset_color%}"
+GIT_PROMPT_BEHIND="%{$fg[cyan]%}↓NUM%{$reset_color%}"
+GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
+GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}+%{$reset_color%}"
+GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}+%{$reset_color%}"
+GIT_PROMPT_STAGED="%{$fg_bold[green]%}+%{$reset_color%}"
 
-    if [[ $number == 0 ]]
-    then
-      echo " "
-    else
-      echo " with %{$fg_bold[magenta]%}$number unpushed%{$reset_color%}"
-    fi
+# Show Git branch/tag, or name-rev if on detached head
+parse_git_branch() {
+  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+}
+
+# Show different symbols as appropriate for various Git repository states
+parse_git_state() {
+  # Compose this value via multiple conditional appends.
+  local GIT_STATE=""
+
+  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_AHEAD" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
   fi
-}
 
-directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
-}
-
-battery_status() {
-  if [[ $(sysctl -n hw.model) == *"Book"* ]]
-  then
-    $ZSH/bin/battery-status
+  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_BEHIND" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
   fi
+
+  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
+  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
+  fi
+
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
+  fi
+
+  if ! git diff --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
+  fi
+
+  if ! git diff --cached --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
+  fi
+
+  if [[ -n $GIT_STATE ]]; then
+    echo "$GIT_STATE"
+  fi
+
 }
 
-export PROMPT=$'\n$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
-set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+# If inside a Git repository, print its branch and state
+function git_prompt_string() {
+  local git_where="$(parse_git_branch)"
+  [ -n "$git_where" ] && echo "%{$reset_color%}$(parse_git_state)%{$reset_color%} %{$fg[yellow]%}${git_where#(refs/heads/|tags/)}%{$reset_color%}"
 }
 
-precmd() {
-  title "zsh" "%m" "%55<...<%~"
-  set_prompt
-}
+RPS1='$(git_prompt_string)'
+PROMPT="%{$reset_color%}%{$fg[blue]%}[$(_user_host)$(_path)%{$fg[blue]%}]%{$fg[green]%}$%{$reset_color%} "
