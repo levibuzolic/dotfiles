@@ -36,7 +36,6 @@ brew 'watchman'
 brew 'webp'
 brew 'wget'
 brew 'wix/brew/applesimutils'
-brew 'yarn', args: ['without-node']
 brew 'youtube-dl'
 brew 'zsh'
 

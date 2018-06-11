@@ -57,5 +57,3 @@ rescue LoadError
   puts "awesome_print is not installed. To enable, run: gem install awesome_print"
 end
 
-# Tab Completion
-require_without_bundler 'irb/completion'

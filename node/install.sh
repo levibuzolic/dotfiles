@@ -1,14 +1,11 @@
-#!/bin/sh
+echo "Installing node"
+n -q stable
 
-# Check for n
-if test ! $(which n)
-then
-  echo "  Installing n (node version manager)"
-  curl -sL https://git.io/n-install | bash -s -- -q
+echo "Installing avn"
+npm install -g avn avn-n
+
+echo "avn setup"
+if [ ! -f "$HOME/.avnrc" ]; then
+  avn setup
+  echo "You may want to remove the avn script from ~/.zshrc"
 fi
-
-exit 0
-
-
-echo "Installing n (node version manager)"
-curl -sL https://git.io/n-install | bash -s -- -q
