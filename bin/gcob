@@ -9,12 +9,3 @@ gcob() {
   branch=$(echo "$branches" | fzf --ansi --height=30) &&
   git checkout $(echo "$branch" | awk '{print $4}')
 }
-
-# Use gcob when no args supplied to gco
-gco() {
-  if [ $# -eq 0 ]; then
-    gcob
-  else
-    git checkout "$@"
-  fi
-}

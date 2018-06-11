@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# FZF Previous branches
+
+# Use gcob when no args supplied to gco
+gco() {
+  if [ $# -eq 0 ]; then
+    gcob
+  else
+    git checkout "$@"
+  fi
+}

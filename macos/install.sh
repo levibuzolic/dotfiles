@@ -4,7 +4,7 @@
 # yeah, let's do that.
 
 echo "› sudo softwareupdate -i -a"
-sudo softwareupdate -i -a
+# sudo softwareupdate -i -a
 
 echo "Setting sane mac OS defaults"
 
@@ -49,8 +49,8 @@ defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 10
-defaults write NSGlobalDomain InitialKeyRepeat -int 50
+# defaults write NSGlobalDomain KeyRepeat -int 10
+# defaults write NSGlobalDomain InitialKeyRepeat -int 50
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -199,7 +199,7 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+# hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
