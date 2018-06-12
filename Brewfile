@@ -38,6 +38,7 @@ brew 'wget'
 brew 'wix/brew/applesimutils'
 brew 'youtube-dl'
 brew 'zsh'
+brew 'zsh-completions'
 
 cask '1password'
 cask 'appcleaner'
