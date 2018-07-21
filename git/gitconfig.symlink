@@ -38,3 +38,6 @@
   #
   # Otherwise try: default = simple
 	default = current
+[user]
+	name = Levi Buzolic
+	email = levibuzolic@gmail.com
