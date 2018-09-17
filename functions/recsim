@@ -1,0 +1,4 @@
+## Starts recording the simulator.
+recsim() {
+  xcrun simctl io booted recordVideo "$1"
+}
