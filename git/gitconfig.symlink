@@ -17,7 +17,7 @@
   ui = true
 [core]
   excludesfile = ~/.gitignore
-  editor = subl -w
+  editor = code -w
   ignorecase = false
   whitespace = trailing-space,space-before-tab
 [apply]

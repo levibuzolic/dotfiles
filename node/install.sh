@@ -1,11 +1,14 @@
+echo "Setting up n permissions... (password will be required)"
+
+# make cache folder (if missing) and take ownership
+sudo mkdir -p /usr/local/n
+sudo chown -R $(whoami) /usr/local/n
+
+# take ownership of node install destination folders
+sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+
 echo "Installing node"
-n -q stable
+n -q lts
 
-echo "Installing avn"
-npm install -g avn avn-n
-
-echo "avn setup"
-if [ ! -f "$HOME/.avnrc" ]; then
-  avn setup
-  echo "You may want to remove the avn script from ~/.zshrc"
-fi
+# echo "Installing avn"
+# yarn global add avn avn-n
