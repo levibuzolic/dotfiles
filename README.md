@@ -28,7 +28,7 @@ There's a few special files in the hierarchy.
 Run this:
 
 ```sh
-git clone https://github.com/levibuzolic/dotfiles.git ~/.dotfiles
+git clone git@github.com:levibuzolic/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./script/bootstrap
 ```
