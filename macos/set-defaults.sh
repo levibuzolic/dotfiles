@@ -51,5 +51,9 @@ defaults write com.apple.iphonesimulator ShowSingleTouches 1
 mkdir -p ~/Pictures/Screenshots
 defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
+# Don't smooth zoom mode
+defaults write com.apple.universalaccess closeViewSmoothImages 0
+defaults write com.apple.universalaccess closeViewScrollWheelToggle 1
+
 # Restart UIServer for changes to take effect
 killall SystemUIServer

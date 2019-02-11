@@ -152,5 +152,10 @@ then
   fi
 fi
 
+touch $HOME/.secrets
+
+echo ''
+echo '  Secrets can be placed in ~/.secrets'
+
 echo ''
 echo '  All installed!'

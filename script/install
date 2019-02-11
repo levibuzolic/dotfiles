@@ -20,3 +20,6 @@ find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
 # Install SF Mono
 cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
+
+# Fix Figma colours
+defaults write com.figma.Desktop ColorCorrectRendering -bool true

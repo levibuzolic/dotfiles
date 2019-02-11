@@ -56,6 +56,7 @@ cask 'charles'
 cask 'day-o'
 cask 'docker'
 cask 'dropbox'
+cask 'figma'
 cask 'firefox'
 cask 'github'
 # cask 'google-chrome-beta' - missing currently
