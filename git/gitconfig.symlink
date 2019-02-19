@@ -24,6 +24,8 @@
   whitespace = nowarn
 [mergetool]
   keepBackup = false
+[commit]
+  verbose = true
 [merge]
   tool = opendiff
 [difftool]
