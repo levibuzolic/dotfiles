@@ -102,6 +102,7 @@ cask 'quicklook-json'
 # ---------- Fonts ----------
 cask 'font-menlo-for-powerline'
 cask 'font-fira-sans'
+cask 'font-fira-code'
 cask 'font-open-sans'
 cask 'font-open-sans-condensed'
 cask 'font-dejavu-sans'
