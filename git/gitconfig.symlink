@@ -1,8 +1,52 @@
 # Local/private config goes in the include
 [include]
   path = ~/.gitconfig.local
+[push]
+  # See `git help config` (search for push.default)
+  # for more information on different options of the below setting.
+  #
+  # Setting to git 2.0 default to suppress warning message
+  #
+  # Otherwise try: default = simple
+	default = current
+[mergetool]
+  keepBackup = false
+[merge]
+  tool = opendiff
+[hub]
+  protocol = https
+[alias]
+  co = checkout
+  promote = !$ZSH/bin/git-promote
+  wtf = !$ZSH/bin/git-wtf
+  rank-contributors = !$ZSH/bin/git-rank-contributors
+  count = !git shortlog -sn
+  rim = !git rebase --interactive --autosquash origin/master
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+[core]
+  excludesfile = ~/.gitignore
+  editor = code --wait
+  ignorecase = false
+  whitespace = trailing-space,space-before-tab
+[apply]
+  whitespace = nowarn
+[mergetool]
+  keepBackup = false
+[merge]
+  tool = opendiff
+[difftool]
+  prompt = false
+[help]
+  autocorrect = 1
 [filter "lfs"]
+	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-	clean = git-lfs clean -- %f
+[commit]
+  verbose = true
