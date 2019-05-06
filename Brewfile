@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/core'
 tap 'homebrew/cask'
+tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'wix/brew'
 
@@ -39,6 +40,7 @@ brew 'watchman'
 brew 'webp'
 brew 'wget'
 brew 'wix/brew/applesimutils'
+brew 'yarn', args: ['ignore-dependencies']
 brew 'youtube-dl'
 brew 'zsh'
 brew 'zsh-completions'
@@ -74,3 +76,7 @@ cask 'tunnelblick'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zwift'
+
+# Android development
+cask 'android-sdk'
+cask 'java8'
