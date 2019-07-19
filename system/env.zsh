@@ -30,4 +30,4 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 launchctl setenv JAVA_HOME $JAVA_HOME
 launchctl setenv ANDROID_HOME $ANDROID_HOME
 
-source $HOME/.secrets
+source $HOME/.envsecrets

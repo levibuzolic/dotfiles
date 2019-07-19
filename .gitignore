@@ -1,2 +1,2 @@
-system/secrets.symlink
+system/envsecrets.symlink
 git/gitconfig.local.symlink
