@@ -43,7 +43,7 @@ brew 'watchman'
 brew 'webp'
 brew 'wget'
 brew 'wix/brew/applesimutils'
-brew 'yarn', args: ['ignore-dependencies']
+brew 'yarn'
 brew 'youtube-dl'
 brew 'zsh'
 brew 'zsh-completions'
