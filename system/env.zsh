@@ -17,6 +17,9 @@ export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 # export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
 
+# Catalina OpenSSL fix
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 # Android studio version
 # export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 # export ANDROID_SDK_HOME=/Users/$USER/Library/Android/sdk
@@ -26,6 +29,10 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # export ANDROID_HOME=$HOME/Library/Android/sdk
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
 launchctl setenv JAVA_HOME $JAVA_HOME
 launchctl setenv ANDROID_HOME $ANDROID_HOME

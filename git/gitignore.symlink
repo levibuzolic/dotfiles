@@ -10,3 +10,4 @@ Thumbs.db
 .sass-cache/
 npm-debug.log
 yarn-error.log
+Brewfile.lock.json
