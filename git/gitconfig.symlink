@@ -33,16 +33,23 @@
   editor = code --wait
   ignorecase = false
   whitespace = trailing-space,space-before-tab
+  pager = delta
+
 [apply]
   whitespace = nowarn
+
 [mergetool]
   keepBackup = false
+
 [merge]
   tool = opendiff
+
 [difftool]
   prompt = false
+
 [help]
   autocorrect = 1
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -50,3 +57,11 @@
 	required = true
 [commit]
   verbose = true
+
+[delta]
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended
+
+[interactive]
+  diffFilter = delta --color-only
