@@ -42,6 +42,5 @@ unset config_files
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-$(brew --prefix asdf)/asdf.sh
-$(brew --prefix)/opt/fzf/install
+. $(brew --prefix asdf)/asdf.sh
 
