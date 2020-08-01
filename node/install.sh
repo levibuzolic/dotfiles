@@ -1,14 +1,2 @@
-echo "Setting up n permissions... (password will be required)"
-
-# make cache folder (if missing) and take ownership
-sudo mkdir -p /usr/local/n
-sudo chown -R $(whoami) /usr/local/n
-
-# take ownership of node install destination folders
-sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
-
-echo "Installing node"
-n -q lts
-
-# echo "Installing avn"
-# yarn global add avn avn-n
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'

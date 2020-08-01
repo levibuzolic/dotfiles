@@ -10,3 +10,5 @@ then
 fi
 
 alias up='./up'
+
+alias svgo-sketch='svgo --enable=removeTitle --enable=removeDesc --enable=removeDoctype --enable=removeEmptyAttrs --enable=removeUnknownsAndDefaults --enable=removeUnusedNS --enable=removeEditorsNSData --enable=convertTransform --enable=sortAttrs --enable=cleanupIDs --pretty --multipass --indent 2'
