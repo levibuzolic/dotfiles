@@ -34,6 +34,8 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
+. $(brew --prefix asdf)/asdf.sh
+
 launchctl setenv JAVA_HOME $JAVA_HOME
 launchctl setenv ANDROID_HOME $ANDROID_HOME
 

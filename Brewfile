@@ -93,6 +93,7 @@ cask 'imageoptim'
 cask 'insomnia'
 cask 'iterm2-beta'
 cask 'kap'
+cask 'karabiner-elements'
 cask 'keepingyouawake'
 cask 'licecap'
 cask 'little-snitch' # Requires manual install from DMG
