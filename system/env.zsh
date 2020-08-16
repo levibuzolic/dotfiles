@@ -37,4 +37,4 @@ export CLOUDSDK_PYTHON=/usr/local/bin/python3
 launchctl setenv JAVA_HOME $JAVA_HOME
 launchctl setenv ANDROID_HOME $ANDROID_HOME
 
-source $HOME/.envsecrets
+source $HOME/.secrets
