@@ -41,3 +41,4 @@ done
 unset config_files
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/src/ferocia/up/.zsh-up-completion/init.zsh ] && source ~/src/ferocia/up/.zsh-up-completion/init.zsh
