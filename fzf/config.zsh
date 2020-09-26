@@ -2,11 +2,15 @@ export FZF_DEFAULT_OPTS="--ansi --no-mouse --height=20" # Enable colour; disable
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+fi
 
 # Key bindings
 # ------------
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+fi
 
 _gen_fzf_default_opts() {
   local colorBackground='#273136'
