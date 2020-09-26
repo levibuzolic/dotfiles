@@ -1,4 +1,8 @@
-export EDITOR='code -w'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export EDITOR='code -w'
+else
+  export EDITOR='nano'
+fi
 
 # export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # export ANT_HOME=/usr/local/opt/ant
@@ -18,7 +22,9 @@ export EDITOR='code -w'
 # export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
 
 # Catalina OpenSSL fix
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH="/usr/local/opt/openssl/bin:$PATH"
+fi
 
 # Android studio version
 # export ANDROID_HOME=/Users/$USER/Library/Android/sdk
@@ -30,11 +36,15 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # export ANDROID_HOME=$HOME/Library/Android/sdk
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+fi
 
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
-. $(brew --prefix asdf)/asdf.sh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  . $(brew --prefix asdf)/asdf.sh
+fi
 
 # launchctl setenv JAVA_HOME $JAVA_HOME
 # launchctl setenv ANDROID_HOME $ANDROID_HOME
