@@ -1,4 +1,4 @@
-![Screenshot](screenshot.png)
+![image](https://user-images.githubusercontent.com/721323/94336708-6a79ef80-0028-11eb-8295-e0665eb46684.png)
 
 # dotfiles
 
