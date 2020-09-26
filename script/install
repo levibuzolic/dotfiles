@@ -6,21 +6,23 @@ set -e
 
 cd "$(dirname $0)"/..
 
-# Run Homebrew through the Brewfile
-echo "› brew bundle"
-brew bundle
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Run Homebrew through the Brewfile
+  echo "› brew bundle"
+  brew bundle
 
-# find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+  # find the installers and run them iteratively
+  find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
-# Install SF Mono
-cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
+  # Install SF Mono
+  cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
 
-# Fix Figma colours
-defaults write com.figma.Desktop ColorCorrectRendering -bool true
+  # Fix Figma colours
+  defaults write com.figma.Desktop ColorCorrectRendering -bool true
 
-# Install ffmpeg if not present
-if ! [ -x "$(command -v ffmpeg)" ]; then
-  echo 'Installing ffmpeg with all plugins'
-  brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
+  # Install ffmpeg if not present
+  if ! [ -x "$(command -v ffmpeg)" ]; then
+    echo 'Installing ffmpeg with all plugins'
+    brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
+  fi
 fi

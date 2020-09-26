@@ -5,6 +5,10 @@
 # This installs some of the common dependencies needed (or at least desired)
 # using Homebrew.
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  exit 0
+fi
+
 # Check for Homebrew
 if test ! $(which brew)
 then
