@@ -11,4 +11,8 @@ fi
 
 alias up='./up'
 
+alias upx='OVERMIND_AUTO_RESTART=appium OVERMIND_IGNORED_PROCESSES=api,api_docs ./up'
+alias upadmin='OVERMIND_IGNORED_PROCESSES=api,api_docs,appium,packager ./up'
+
+
 alias svgo-sketch='svgo --enable=removeTitle --enable=removeDesc --enable=removeDoctype --enable=removeEmptyAttrs --enable=removeUnknownsAndDefaults --enable=removeUnusedNS --enable=removeEditorsNSData --enable=convertTransform --enable=sortAttrs --enable=cleanupIDs --pretty --multipass --indent 2'

@@ -49,4 +49,4 @@ fi
 # launchctl setenv JAVA_HOME $JAVA_HOME
 # launchctl setenv ANDROID_HOME $ANDROID_HOME
 
-source $HOME/.secrets
+for f in $HOME/.secrets/.*; do source $f; done
