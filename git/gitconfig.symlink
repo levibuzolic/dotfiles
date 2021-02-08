@@ -12,7 +12,8 @@
 	default = current
 
 [pull]
-  ff = only
+  rebase = false
+  # ff = only
 
 [mergetool]
   keepBackup = false

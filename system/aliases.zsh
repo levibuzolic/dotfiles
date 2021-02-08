@@ -11,6 +11,9 @@ fi
 
 alias up='./up'
 
+# Add for no docker
+# DEV_DOCKER=false
+
 alias upx='OVERMIND_AUTO_RESTART=appium OVERMIND_IGNORED_PROCESSES=api,api_docs ./up'
 alias upadmin='OVERMIND_IGNORED_PROCESSES=api,api_docs,appium,packager ./up'
 
