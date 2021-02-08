@@ -1,3 +1,8 @@
+typeset -F SECONDS=0
+# Set this to true to get timestamps for perfomance debugging
+_timestamps=false
+_timestamp() { if [ "$_timestamps" = true ]; then echo "$SECONDS after $1"; fi }
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -20,25 +25,34 @@ config_files=($ZSH/**/*.zsh)
 for file in ${(M)config_files:#*/path.zsh}
 do
   source $file
+  _timestamp $file
 done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
+  _timestamp $file
 done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
+_timestamp "compinit"
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
   source $file
+  _timestamp $file
 done
 
 unset config_files
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+_timestamp "fzf"
+
 [ -f ~/src/ferocia/up/.zsh-up-completion/init.zsh ] && source ~/src/ferocia/up/.zsh-up-completion/init.zsh
+_timestamp "up"
+
+_timestamp "complete"
