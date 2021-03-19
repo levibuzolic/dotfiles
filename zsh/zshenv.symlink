@@ -1,0 +1,3 @@
+# Disable docker as default environment for Up
+export DEV_DOCKER=false
+export NODE_BINARY=/Users/levi/.asdf/shims/node

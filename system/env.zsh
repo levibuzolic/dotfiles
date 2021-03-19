@@ -18,4 +18,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   . /usr/local/opt/asdf/asdf.sh
 fi
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  . /usr/local/opt/asdf/asdf.sh
+fi
+
+# Disable docker as default environment for Up
+export DEV_DOCKER=false
+
+export NODE_BINARY=/Users/levi/.asdf/shims/node
+
+
 for f in $HOME/.secrets/.*; do source $f; done
