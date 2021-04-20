@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/721323/94336708-6a79ef80-0028-11eb-8295-e0665eb46684.png)
+![image](https://user-images.githubusercontent.com/721323/115319098-6549e100-a1c2-11eb-8c73-11049e57821e.png)
 
 # dotfiles
 
