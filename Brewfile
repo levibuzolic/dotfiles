@@ -90,7 +90,6 @@ cask 'imageoptim'
 cask 'insomnia'
 cask 'iterm2-beta'
 cask 'kap'
-cask 'karabiner-elements'
 cask 'keepingyouawake'
 cask 'licecap'
 cask 'little-snitch' # Requires manual install from DMG
@@ -127,7 +126,6 @@ cask 'font-office-code-pro'
 cask 'font-pt-mono'
 cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
-cask 'font-ubuntu'
 
 # ---------- Mac App Store ----------
 mas 'Apple Configurator 2', id: 1037126344
