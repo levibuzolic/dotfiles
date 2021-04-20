@@ -9,3 +9,7 @@ then
 else
   bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
 fi
+
+echo "Installing asdf yarn plugin..."
+asdf plugin-add yarn
+asdf install yarn latest
